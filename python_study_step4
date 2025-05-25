@@ -1,0 +1,186 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyN3VhhXE2ByqHRio4pNln9+",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/easttwo2/data_analysis/blob/main/python_study_step4\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "2VPWjd5tI9V_",
+        "outputId": "e93d7f5b-ad74-4fa4-a08b-6d1df33e73be"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "100000원이 입금되었습니다. 잔액:100000원\n",
+            "50000원이 출금되었습니다.잔액은 100000원 입니다.\n",
+            "60000원이 출금되었습니다.잔액은 100000원 입니다.\n"
+          ]
+        }
+      ],
+      "source": [
+        "# 문제 5. BankAccount 클래스 구현\n",
+        "\n",
+        "# 요구사항\n",
+        "\n",
+        "#\n",
+        "\n",
+        "# 속성: account_holder (예금주), balance (잔액, 초기값 0)\n",
+        "\n",
+        "#\n",
+        "\n",
+        "# 메서드:\n",
+        "\n",
+        "# deposit(amount) : 입금, 잔액 증가\n",
+        "\n",
+        "# withdraw(amount) : 출금\n",
+        "\n",
+        "# 잔액 부족 시 \"잔액이 부족합니다.\" 출력\n",
+        "\n",
+        "class BankAccount:\n",
+        "\n",
+        "  def __init__(self, account_holder):\n",
+        "\n",
+        "    self.account_holder = account_holder\n",
+        "\n",
+        "    self.balance = 0\n",
+        "\n",
+        "  def deposit(self, amount):\n",
+        "\n",
+        "    if amount > 0:\n",
+        "\n",
+        "      self.balance += amount\n",
+        "\n",
+        "      print(f\"{amount}원이 입금되었습니다. 잔액:{self.balance}원\")\n",
+        "\n",
+        "    else:\n",
+        "\n",
+        "      print('금액을 잘못입력했습니다.')\n",
+        "\n",
+        "  def withdraw(self, amount):\n",
+        "\n",
+        "    if self.balance > amount:\n",
+        "\n",
+        "      print(f\"{amount}원이 출금되었습니다.잔액은 {self.balance}원 입니다.\")\n",
+        "\n",
+        "    else:\n",
+        "\n",
+        "      print(\"잔액이 부족합니다.\")\n",
+        "\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "\n",
+        "    acct = BankAccount(\"홍길동\")\n",
+        "\n",
+        "    acct.deposit(100000)   # 100000원이 입금되었습니다. 잔액: 100000원\n",
+        "\n",
+        "    acct.withdraw(50000)   # 50000원이 출금되었습니다. 잔액: 50000원\n",
+        "\n",
+        "    acct.withdraw(60000)   # 잔액이 부족합니다.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#문제 1. 재고 관리 클래스 (InventoryItem)\n",
+        "\n",
+        "#문제:\n",
+        "\n",
+        "#InventoryItem 클래스를 정의하고, 생성자에서 name(상품명)과 stock(재고 수량, 기본값 0)을 초기화하세요.\n",
+        "#add_stock(amount) 메서드는 amount만큼 재고를 늘리고, 증가 후 재고를 출력합니다.\n",
+        "#remove_stock(amount) 메서드는 재고가 충분할 때만 amount만큼 차감하고, 부족하면 “재고가 부족합니다.”를 출력하세요.\n",
+        "\n",
+        "\n",
+        "class InventoryItem:\n",
+        "  def __init__(self, name):\n",
+        "\n",
+        "    self.name = name\n",
+        "    self.stock = 0\n",
+        "\n",
+        "  def add_stock(self, amount):\n",
+        "\n",
+        "    if amount > 0:\n",
+        "\n",
+        "      self.stock += amount\n",
+        "\n",
+        "      print(f\"{amount}개 넣었고 {self.stock}개 있습니다\")\n",
+        "\n",
+        "    else:\n",
+        "      print(\"잘못입력하셨습니다.\")\n",
+        "\n",
+        "  def remove_stock(self, amount):\n",
+        "\n",
+        "    if self.stock > amount:\n",
+        "\n",
+        "      self.stock -= amount\n",
+        "\n",
+        "      print(f\"{amount}개 빠졌고 {self.stock}개 있습니다.\")\n",
+        "\n",
+        "    else:\n",
+        "\n",
+        "      print(\"재고가 부족합니다.\")\n",
+        "\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "\n",
+        "    acct = InventoryItem(\"사과\")\n",
+        "\n",
+        "    acct.add_stock(100)   # 100000원이 입금되었습니다. 잔액: 100000원\n",
+        "\n",
+        "    acct.remove_stock(80)   # 50000원이 출금되었습니다. 잔액: 50000원\n",
+        "\n",
+        "    acct.remove_stock(80)   # 잔액이 부족합니다.\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Nsk-g3rDOpex",
+        "outputId": "c38ef04f-29a1-4301-9ac0-c80e6a4536b6"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "100개 넣었고 100개 있습니다\n",
+            "80개 빠졌고 20개 있습니다.\n",
+            "재고가 부족합니다.\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
